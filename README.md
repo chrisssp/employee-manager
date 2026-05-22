@@ -1,34 +1,55 @@
-# EmpresaPrueba - Monorepo
+<h1 align="center"> Employee Manager — Employee & Role Management System</h1>
 
-Sistema de gestión de empleados y roles con backend .NET y frontend Next.js.
+<p align="center">
+  <img src="https://img.shields.io/badge/.NET-8-512BD4?logo=dotnet&logoColor=white" alt=".NET 8">
+  <img src="https://img.shields.io/badge/Next.js-16-000000?logo=next.js&logoColor=white" alt="Next.js">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/SQL_Server-CC2927?logo=microsoft-sql-server&logoColor=white" alt="SQL Server">
+</p>
 
-## 📁 Estructura
+<p align="center">
+  <em>Full-stack monorepo for employee and role management with CRUD operations, pagination, and audit logging.</em>
+</p>
+
+<p align="center">
+  <a href="README.md">🇬🇧 English</a> · <a href="README.es.md">🇪🇸 Español</a>
+</p>
+
+---
+
+## About Employee Manager
+
+A full-stack monorepo featuring an ASP.NET Core 8 backend and a Next.js 16 frontend for managing employees, roles, and audit logs with server-side pagination and soft delete support.
+
+## Project Structure
 
 ```
-EmpresaPrueba/
+employee-manager/
 ├── api/                      # Backend (ASP.NET Core 8)
-│   ├── Controllers/         # Endpoints HTTP
-│   ├── Services/            # Lógica de negocio
-│   ├── Models/              # Entidades de BD
-│   ├── DTOs/                # Modelos de transferencia
-│   ├── Interfaces/          # Contratos de servicios
-│   ├── Middlewares/         # Middlewares custom
-│   ├── Migrations/          # Migraciones EF Core
-│   └── Program.cs           # Configuración principal
+│   ├── Controllers/         # HTTP endpoints
+│   ├── Services/            # Business logic
+│   ├── Models/              # Database entities
+│   ├── DTOs/                # Transfer models
+│   ├── Interfaces/          # Service contracts
+│   ├── Middlewares/         # Custom middleware
+│   ├── Migrations/          # EF Core migrations
+│   └── Program.cs           # Main configuration
 │
 ├── frontend/                 # Frontend (Next.js 16 + React 19)
 │   ├── src/
-│   │   ├── app/            # Rutas y páginas
-│   │   ├── components/     # Componentes React
-│   │   ├── services/       # Clientes API
-│   │   └── lib/            # Utilidades
-│   └── package.json        # Dependencias
+│   │   ├── app/            # Routes and pages
+│   │   ├── components/     # React components
+│   │   ├── services/       # API clients
+│   │   └── lib/            # Utilities
+│   └── package.json        # Dependencies
 │
-├── .gitignore              # Excepciones de git
-└── README.md               # Este archivo
+├── .gitignore
+├── LICENSE
+└── README.md
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Backend
 
@@ -39,7 +60,7 @@ dotnet build
 dotnet run
 ```
 
-Backend disponible en: `http://localhost:5110`
+Backend available at: `http://localhost:5110`
 
 ### Frontend
 
@@ -49,43 +70,43 @@ npm install
 npm run dev
 ```
 
-Frontend disponible en: `http://localhost:3000`
+Frontend available at: `http://localhost:3000`
 
-## 🗄️ Base de Datos
+## Database
 
-- **Motor:** SQL Server
-- **Base de datos:** `Empresa`
-- **Servidor:** localhost (local development)
+- **Engine:** SQL Server
+- **Database:** `Empresa`
+- **Server:** localhost (local development)
 
-Migraciones automáticas se aplican al iniciar la aplicación.
+Migrations are applied automatically on startup.
 
-## 📋 Funcionalidades
+## Features
 
-### Empleados
-- ✅ CRUD completo (Crear, Leer, Actualizar, Eliminar)
-- ✅ Asignación de roles
-- ✅ Soft delete (baja lógica) y reactivación
-- ✅ Paginación server-side (10 registros/página)
+### Employees
+- Full CRUD (Create, Read, Update, Delete)
+- Role assignment
+- Soft delete and reactivation
+- Server-side pagination (10 records/page)
 
 ### Roles
-- ✅ CRUD completo
-- ✅ Validación de eliminación (no permite si hay empleados asignados)
-- ✅ Paginación server-side
+- Full CRUD
+- Validation (cannot delete roles with assigned employees)
+- Server-side pagination
 
 ### Logs
-- ✅ Registro automático de transacciones HTTP
-- ✅ Captura de payload
-- ✅ Timestamp con timezone
-- ✅ Paginación server-side
+- Automatic HTTP transaction logging
+- Payload capture
+- Timestamp with timezone
+- Server-side pagination
 
-## 🛠️ Stack Tecnológico
+## Tech Stack
 
 ### Backend
 - .NET 8
 - Entity Framework Core
 - SQL Server
 - ASP.NET Core
-- Middleware de excepciones y logging
+- Exception and logging middleware
 
 ### Frontend
 - Next.js 16.2.4
@@ -96,31 +117,37 @@ Migraciones automáticas se aplican al iniciar la aplicación.
 - Tailwind CSS
 - shadcn/ui
 
-## 📝 API Endpoints
+## API Endpoints
 
-### Empleados
-- `GET /api/empleados` - Listar (con paginación)
-- `GET /api/empleados/{id}` - Obtener por ID
-- `POST /api/empleados` - Crear
-- `PUT /api/empleados/{id}` - Actualizar
-- `DELETE /api/empleados/{id}` - Baja lógica
-- `POST /api/empleados/{id}/reactivar` - Reactivar
+### Employees
+- `GET /api/empleados` - List (with pagination)
+- `GET /api/empleados/{id}` - Get by ID
+- `POST /api/empleados` - Create
+- `PUT /api/empleados/{id}` - Update
+- `DELETE /api/empleados/{id}` - Soft delete
+- `POST /api/empleados/{id}/reactivar` - Reactivate
 
 ### Roles
-- `GET /api/roles` - Listar (con paginación)
-- `GET /api/roles/{id}` - Obtener por ID
-- `POST /api/roles` - Crear
-- `PUT /api/roles/{id}` - Actualizar
-- `DELETE /api/roles/{id}` - Eliminar
+- `GET /api/roles` - List (with pagination)
+- `GET /api/roles/{id}` - Get by ID
+- `POST /api/roles` - Create
+- `PUT /api/roles/{id}` - Update
+- `DELETE /api/roles/{id}` - Delete
 
 ### Logs
-- `GET /api/logs` - Listar (con paginación)
-- `GET /api/logs/{id}` - Obtener por ID
+- `GET /api/logs` - List (with pagination)
+- `GET /api/logs/{id}` - Get by ID
 
-## 👤 Autor
+## Contributing
 
-Christian Serrano Puertos (chrisssp)
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming, commit conventions, and PR workflow.
 
----
+## License
 
-**Última actualización:** Mayo 2026
+This project is licensed under the GPL v3 — see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+**Authors:**
+
+- [@chrisssp](https://github.com/chrisssp) — Christian Serrano
